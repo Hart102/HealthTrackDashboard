@@ -5,22 +5,24 @@ import axios from "axios"
 const Patients = () => {
     const [patients, setPatients] = useState();
 
-    const fetchPetients = async () => {
-        const username = "coalition";
-        const password = "skills-test"
-        const authCredentials = btoa(`${username}:${password}`)
 
-        const result = await axios.get("https://fedskillstest.coalitiontechnologies.workers.dev", {
-            headers: {
-                "Authorization": `Basic ${authCredentials}`
-            }
-        });
-        if (result.status == 200) {
-            setPatients(result.data)
-        }
-    }
 
     useEffect(() => {
+        const fetchPetients = async () => {
+            const username = import.meta.env.VITE_API_USERNAME;
+            const password = import.meta.env.VITE_API_PASSWORD;
+            const authCredentials = btoa(`${username}:${password}`);
+
+            const result = await axios.get("https://fedskillstest.coalitiontechnologies.workers.dev", {
+                headers: {
+                    "Authorization": `Basic ${authCredentials}`
+                }
+            });
+            if (result.status == 200) {
+                setPatients(result.data)
+            }
+        }
+
         fetchPetients();
     }, [])
     return (

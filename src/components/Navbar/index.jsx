@@ -15,7 +15,7 @@ const Navbar = () => {
           <Link
             key={label}
             href={href}
-            className={`flex items-center space-x-2 font-semibold cursor-pointer ${className} text-cs-gray-100-50 hover:text-cyan-500`}>
+            className={`flex items-center space-x-2 font-semibold cursor-pointer ${className} text-cs-gray-100-50`}>
             <Icon className="w-5 h-5" />
             <span>{label}</span>
           </Link>
